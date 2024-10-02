@@ -1,0 +1,9 @@
+﻿  LIbrary_Project.cpp
+C:\Users\cog\Desktop\CPP_Stuff\C++ Advanced\Library_Project\TextTable.h(105,52): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'LIbrary_Project.cpp')
+  
+C:\Users\cog\Desktop\CPP_Stuff\C++ Advanced\Library_Project\TextTable.h(108,34): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'LIbrary_Project.cpp')
+  
+C:\Users\cog\Desktop\CPP_Stuff\C++ Advanced\Library_Project\LIbrary_Project.cpp(36,23): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  ConsoleApplication3.vcxproj -> C:\Users\cog\Desktop\CPP_Stuff\C++ Advanced\Library_Project\x64\Debug\Library_Project.exe
