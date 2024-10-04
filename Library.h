@@ -9,6 +9,7 @@
 #include "UserManager.h"
 #include "TextTable.h"
 
+
 class Library {
 private:
     std::vector<Book> books;

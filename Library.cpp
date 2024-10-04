@@ -3,9 +3,9 @@
 
 Library::Library() {
     books = {
-        {"Barte1", "Autor1", 200, 1989, "Romance"},
-        {"Darte2", "Autor2", 100, 2019, "Drama"},
-        {"Aarte3", "Autor3", 300, 2020, "Thriller"}
+    {"Barte1", "Autor1", 200, 1989, "Romance"},
+    {"Darte2", "Autor2", 100, 2019, "Drama"},
+    {"Aarte3", "Autor3", 300, 2020, "Thriller"}
     };
 }
 
@@ -25,6 +25,7 @@ void Library::addBook(const Book& book) {
             return;
         }
     }
+    std::cout << "BOOK CODE" << book.getUniqueCode() << std::endl;
     books.push_back(book);
 }
 

@@ -130,6 +130,7 @@
   <ItemGroup>
     <ClCompile Include="Book.cpp" />
     <ClCompile Include="Library.cpp" />
+    <ClCompile Include="LibraryApp.cpp" />
     <ClCompile Include="LIbrary_Project.cpp" />
     <ClCompile Include="Rental.cpp" />
     <ClCompile Include="User.cpp" />
@@ -138,6 +139,7 @@
   <ItemGroup>
     <ClInclude Include="Book.h" />
     <ClInclude Include="Library.h" />
+    <ClInclude Include="LibraryApp.h" />
     <ClInclude Include="Rental.h" />
     <ClInclude Include="Texttable.h" />
     <ClInclude Include="User.h" />

@@ -13,7 +13,7 @@ private:
 	};
 public:
 
-	User* addUser(const User& user);
+	User* addUser(const std::string user_name);
 	void printUsers() const;
 	User* getUserById(int user_id);
 	bool userExists(int user_id) const;

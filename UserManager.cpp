@@ -1,7 +1,9 @@
 #include "UserManager.h"
 
 
-User* UserManager::addUser(const User& user) {
+User* UserManager::addUser(const std::string user_name) {
+    User user(user_name);
+  
 	users.push_back(user);
 	return &users.back();
 }

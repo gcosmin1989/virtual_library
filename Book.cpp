@@ -2,16 +2,15 @@
 #include <iostream>
 #include <stdexcept>
 
-// Initialize static members
+
 int Book::increment = 100;
 int Book::increment_pieces = 0;
 
-// Private function
+
 void Book::setRating(double book_rating) {
     rating = book_rating;
 }
 
-// Constructors
 Book::Book(std::string title, std::string author, int pages, int year, std::string genre)
     : book_title(title), book_author(author), book_pages(pages), book_year(year), book_genre(genre), all_rented(false), rating(0) {
     increment++;
@@ -27,7 +26,7 @@ Book::Book(const Book& src)
     book_pages(src.book_pages),
     book_year(src.book_year),
     book_genre(src.book_genre),
-    unique_code(src.unique_code), // Keep the same unique code when copying
+    unique_code(src.unique_code), 
     all_rented(src.all_rented),
     no_pieces(src.no_pieces),
     ratings(src.ratings),
@@ -68,7 +67,7 @@ Book::Book()
     ratings.assign(5, 0);
 }
 
-// Setters
+
 void Book::setName(std::string title) {
     if (title.length() < 1) {
         std::cout << "Error: The title is too short!" << std::endl;
@@ -137,7 +136,7 @@ void Book::setPieces(int pieces) {
     no_pieces = pieces;
 }
 
-// Getters
+
 std::string Book::getName() const {
     return book_title;
 }
