@@ -4,6 +4,7 @@
 
 
 
+
 void LibraryApp::showMenu(std::string panel[], int size, int selection) {
     std::cout << "\r";
     for (int i = 0; i < size; i++) {
@@ -66,26 +67,53 @@ int LibraryApp::getSizeOfMenu(std::string(&menu_array)[N]) {
     return N;
 }
 
-void LibraryApp::inputStringValidation(std::string& input, const std::string& inputName) {
+void LibraryApp::inputStringValidation(std::string& input, const std::string& input_name) {
     while (input.length() < MIN_LEN || input.length() > MAX_LEN) {
-        std::cout << "Enter a valid " << inputName << ": " << std::endl;
+        if (input_name == "genre" && !validateGenreString(input)) {
+            std::cout << "The " << input_name << " can not contain numbers"<<std::endl ;
+        }
+        std::cout << "Enter a valid " << input_name << " between "<<MIN_LEN<<" and "<<MAX_LEN<<" char: " ;
         std::getline(std::cin, input);
     }
 }
 
 void LibraryApp::inputYearValidation(int& input) {
-    while (input > 2024 || input < 1500) {
-        std::cout << "Enter a valid year between 1500 and 2024: ";
-        std::cin >> input;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    while (true) {
+        if (std::cin >> input) {
+            if (input >= 1500 && input <= 2024) {
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                break;
+            }
+            else {
+                std::cout << "Year must be between 1500 and 2024: " << std::endl;;
+            }
+        }
+        else {
+            std::cout << "Invalid input. Please enter a numeric value: " << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
     }
 }
 
 void LibraryApp::inputPagesValidation(int& input) {
-    while (input < 5) {
-        std::cout << "The number of pages must be greater than 5: ";
-        std::cin >> input;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+
+    while (true) {
+        if (std::cin >> input) {
+            if (input > 5) {
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+                break; 
+            }
+            else {
+                std::cout << "The number of pages must be greater than 5: " << std::endl;
+            }
+        }
+        else {
+            std::cout << "Invalid input. Please enter a numeric value: " << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
     }
 }
 
@@ -172,10 +200,20 @@ User* LibraryApp::checkAdminRightsInput() {
         else {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Invalid input. Please enter a numeric value: \n";
+            std::cout << "Invalid input. Please enter a numeric value: ";
         }
     }
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
+bool LibraryApp::validateGenreString(const std::string book_genre)
+{
+    for (const char c : book_genre) {
+        if (!isalpha(c) && !isspace(c))
+            return false;
+    }
+
+    return true;
 }
 
 void LibraryApp::addBookInput() {
@@ -184,6 +222,8 @@ void LibraryApp::addBookInput() {
     int             book_pages;
     int             book_year;
     std::string     book_genre;
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     std::cout << "Enter the Book Title:" << std::endl;
     std::getline(std::cin, book_title);
@@ -196,20 +236,19 @@ void LibraryApp::addBookInput() {
     std::cout << "Enter the Book Genre:" << std::endl;
     std::getline(std::cin, book_genre);
     inputStringValidation(book_genre, "genre");
+   
 
     std::cout << "Enter the Book Pages:" << std::endl;
-    std::cin >> book_pages;
     inputPagesValidation(book_pages);
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     std::cout << "Enter the Book Year:" << std::endl;
-    std::cin >> book_year;
     inputYearValidation(book_year);
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     Book book(book_title, book_author, book_pages, book_year, book_genre);
     lib.addBook(book);
+    system("cls");
     std::cout << "Book added successfully!" << std::endl;
+    book.print();
 }
 
 void LibraryApp::checkBookExistsInput(int& book_id) {
@@ -235,24 +274,44 @@ void LibraryApp::removeBookInput() {
 void LibraryApp::removeBookCopiesInput() {
     int book_id;
     int book_copies;
+
     lib.print();
     std::cout << "Enter the book ID to remove copies: " << std::endl;
-    std::cin >> book_id;
+
+    while (!(std::cin >> book_id)) {
+        std::cout << "Invalid input. Please enter a numeric Book ID: ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+    }
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     checkBookExistsInput(book_id);
     Book* book = lib.getBookById(book_id);
+
     if (book) {
         int current_copies = book->getNoPieces();
-        std::cout << "Enter the number of copies:" << std::endl;
-        std::cin >> book_copies;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        while (book_copies < 1 || book_copies > current_copies) {
-            std::cout << "The number of copies must be between 1 and " << current_copies << ": ";
-            std::cin >> book_copies;
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        while (true) {
+            std::cout << "Enter the number of copies to remove (1-" << current_copies << "): " << std::endl;
+
+            if (std::cin >> book_copies) {
+                if (book_copies >= 1 && book_copies <= current_copies) {
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+                    break; 
+                }
+                else {
+                    std::cout << "The number of copies must be between 1 and " << current_copies << "." << std::endl;
+                }
+            }
+            else {
+                std::cout << "Invalid input. Please enter a numeric value." << std::endl;
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            }
         }
         book->removeCopy(book_copies);
         std::cout << "Copies removed successfully!" << std::endl;
+    }
+    else {
+        std::cout << "Book not found." << std::endl;
     }
 }
 
@@ -261,69 +320,110 @@ void LibraryApp::addCopiesInput() {
     int book_copies;
     lib.print();
     std::cout << "Enter the book ID:" << std::endl;
-    std::cin >> book_id;
+    while (!(std::cin >> book_id)) {
+        std::cout << "Invalid input. Please enter a numeric Book ID: ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+    }
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cout << "Enter the numbers of copies: " << std::endl;
     checkBookExistsInput(book_id);
     Book* book = lib.getBookById(book_id);
     if (book) {
-        std::cout << "Enter the number of copies:" << std::endl;
-        std::cin >> book_copies;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        while (book_copies < 1 || book_copies > 999) {
-            std::cout << "The number of copies must be between 1 and 999: ";
-            std::cin >> book_copies;
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        }
+        inputPagesValidation(book_copies);
         book->addCopy(book_copies);
         std::cout << "Copies added successfully!" << std::endl;
+    }
+    else {
+        std::cout << "Book not found." << std::endl;
     }
 }
 
 int LibraryApp::editBookInput() {
+
     int book_id;
-    std::cout << "Enter the book ID you want to edit:";
-    std::cin >> book_id;
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    return book_id;
+
+    while (true) {
+        std::cout << "Enter the book ID you want to edit: ";
+        if (std::cin >> book_id) {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            Book* book = lib.getBookById(book_id);
+            if (book) {
+                return book_id;
+            }
+            else {
+                std::cout << "Book with ID " << book_id << " does not exist. " << std::endl;
+            }
+        }
+        else {
+            std::cout << "Invalid input. Please enter a numeric Book ID." << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+    }
 }
+
+
 
 void LibraryApp::giveAdminRightsInput() {
     int user_id;
-    std::cout << "Enter the user ID you want to give Admin Rights:" << std::endl;
-    std::cin >> user_id;
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    User* user = user_manager.getUserById(user_id);
-    if (user) {
-        if (user->getAdminRights()) {
-            std::cout << "The user already has Admin Rights" << std::endl;
+    User* user = nullptr;
+
+    while (true) {
+        std::cout << "Enter the user ID you want to give Admin Rights:" << std::endl;
+        if (std::cin >> user_id) {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            user = user_manager.getUserById(user_id);
+            if (user) {
+                break;
+            }
+            else {
+                std::cout << "The ID you have entered does not exist. Please try again." << std::endl;
+            }
         }
         else {
-            user->setAdminRights();
-            std::cout << "Admin rights granted successfully!" << std::endl;
+            std::cout << "Invalid input. Please enter a numeric User ID." << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
     }
-    else {
-        std::cout << "The ID you have entered does not exist" << std::endl;
+    if (user->getAdminRights()) {
+        std::cout << "The user already has Admin Rights!" << std::endl;
+    }else{
+         user->setAdminRights();
+         std::cout << "Admin rights granted successfully!" << std::endl;
     }
 }
 
 void LibraryApp::removeAdminRightsInput() {
     int user_id;
-    std::cout << "Enter the user ID you want to remove Admin Rights from:" << std::endl;
-    std::cin >> user_id;
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    User* user = user_manager.getUserById(user_id);
-    if (user) {
-        if (user->getAdminRights()) {
-            user->setAdminRights(false);
-            std::cout << "Admin rights removed successfully!" << std::endl;
+    User* user = nullptr;
+
+    while (true) {
+        std::cout << "Enter the user ID you want to remove Admin Rights:" << std::endl;
+
+        if (std::cin >> user_id) {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            user = user_manager.getUserById(user_id);
+            if (user) {
+                break;
+            }
+            else {
+                std::cout << "The ID you have entered does not exist. Please try again." << std::endl;
+            }
         }
         else {
-            std::cout << "The user does not have Admin Rights" << std::endl;
+            std::cout << "Invalid input. Please enter a numeric User ID." << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
         }
     }
+    if (user->getAdminRights()) {
+        user->setAdminRights(false);
+        std::cout << "Admin rights removed successfully!" << std::endl;
+    }
     else {
-        std::cout << "The ID you have entered does not exist" << std::endl;
+        std::cout << "The user does not have Admin Rights." << std::endl;
     }
 }
 
@@ -357,18 +457,24 @@ void LibraryApp::returnBookInput(User* user) {
     std::cout << t << std::endl;
     int book_id;
 
-    std::cout << "Enter the Book ID you want to return: ";
-    std::cin >> book_id;
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-    auto it = std::find_if(userRentals.begin(), userRentals.end(),
-        [book_id](const Rental& rental) {
-            return rental.book_id == book_id;
-        });
-
-    if (it == userRentals.end()) {
-        std::cout << "You have not rented this book.\n";
-        return;
+    while (true) {
+        std::cout << "Enter the Book ID you want to return: ";
+        if (std::cin >> book_id) {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            auto it = std::find_if(userRentals.begin(), userRentals.end(),
+                [book_id](const Rental& rental) {
+                    return rental.book_id == book_id;
+                });
+            break;
+            if (it == userRentals.end()) {
+                std::cout << "You have not rented this book.\n";
+            }
+        }
+        else {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid Book ID. Please enter a valid book ID.\n";
+        }
     }
 
     int rating;
@@ -533,7 +639,7 @@ void LibraryApp::navigateMenu() {
                             int selection_admin_panel = selectOption(admin_panel, getSizeOfMenu(admin_panel), "Admin Panel");
 
                             if (selection_admin_panel == 0) { // Display Books
-                                lib.printBooks();
+                                lib.print();
                             }
                             else if (selection_admin_panel == 1) { // Rented Books
                                 lib.printRentedBooks();
@@ -557,7 +663,7 @@ void LibraryApp::navigateMenu() {
                             else if (selection_admin_panel == 3) { // Edit Book
                                 bool in_edit_menu = true;
                                 while (in_edit_menu) {
-                                    lib.printBooks();
+                                    lib.print();
                                     int book_id = editBookInput();
                                     int selection_book_edit = selectOption(edit_book_panel, getSizeOfMenu(edit_book_panel), "Edit Book");
 

@@ -69,63 +69,32 @@ Book::Book()
 
 
 void Book::setName(std::string title) {
-    if (title.length() < 1) {
-        std::cout << "Error: The title is too short!" << std::endl;
-        book_title = "Anonim";
-    }
-    else {
-        book_title = title;
-    }
+  
+    book_title = title;
+    
 }
 
 void Book::setAuthor(std::string author) {
-    try {
-        if (author.length() < 1) {
-            throw std::invalid_argument("The author name is too short!");
-        }
-        book_author = author;
-    }
-    catch (const std::exception& e) {
-        book_author = "Anonim";
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
+ 
+    book_author = author;
+    
 }
 
 void Book::setPages(int pages) {
-    try {
-        if (pages < 10) {
-            throw std::invalid_argument("Number of pages must be at least 10.");
-        }
-        book_pages = pages;
-    }
-    catch (const std::invalid_argument& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
+
+    book_pages = pages; 
+    
 }
 
 void Book::setYear(int year) {
-    try {
-        if (year > 2024 || year < 1500) {
-            throw std::invalid_argument("Year must be between 1500 and 2024");
-        }
-        book_year = year;
-    }
-    catch (const std::invalid_argument& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
+
+    book_year = year;
+    
+
 }
 
 void Book::setGenre(std::string genre) {
-    try {
-        if (genre.length() < 1) {
-            throw std::invalid_argument("The genre is too short!");
-        }
-        book_genre = genre;
-    }
-    catch (const std::exception& e) {
-        book_genre = "N/A";
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
+    book_genre = genre;
 }
 
 void Book::setRented(bool rented) {
@@ -217,13 +186,27 @@ void Book::calculateRating() {
 }
 
 void Book::print() const {
-    std::cout << "Code: " << unique_code << " || "
-        << "Title: " << book_title << " || "
-        << "Author: " << book_author << " || "
-        << "Pages: " << book_pages << " || "
-        << "Year: " << book_year << " || "
-        << "Genre: " << book_genre << " || "
-        << "Rating: " << rating << std::endl;
+    TextTable t('-', '|', '+');
+    t.add("Code");
+    t.add("Title");
+    t.add("Author");
+    t.add("Pages");
+    t.add("Year");
+    t.add("Genre");
+    t.add("Rating");
+    t.endOfRow();
+
+    t.add(std::to_string(getUniqueCode()));
+    t.add(getName());
+    t.add(getAuthor());
+    t.add(std::to_string(getPages()));
+    t.add(std::to_string(getYear()));
+    t.add(getGenre());
+    t.add(std::to_string(getRating()));
+    t.endOfRow();
+
+
+std::cout << t << std::endl;
 }
 
 void Book::generateNewUniqueCode() {

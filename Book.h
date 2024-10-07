@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Texttable.h"
 #include <string>
 #include <vector>
 

@@ -25,7 +25,6 @@ void Library::addBook(const Book& book) {
             return;
         }
     }
-    std::cout << "BOOK CODE" << book.getUniqueCode() << std::endl;
     books.push_back(book);
 }
 
@@ -200,14 +199,31 @@ void Library::printBook(int book_id) {
 }
 
 void Library::printRentedBooks() const {
-    std::cout << "Rented Books:\n";
-    for (const auto& rental : rentedBooks) {
-        std::cout << "Rent ID: " << rental.rent_id << " || "
-            << "Book ID: " << rental.book_id << " || "
-            << "User ID: " << rental.user_id << " || "
-            << "Rent Date: " << rental.rent_date << " || "
-            << "Return Date: " << rental.return_date << "\n";
+    
+    if (rentedBooks.empty()) {
+        std::cout << "There are no rented books!" << std::endl;
     }
+    else {
+        TextTable t('-', '|', '+');
+
+        t.add("Rent ID");
+        t.add("Book ID");
+        t.add("User ID");
+        t.add("Rent Date");
+        t.add("Return Date");
+        t.endOfRow();
+        std::cout << "Rented Books:\n";
+        for (const auto& rental : rentedBooks) {
+            t.add(std::to_string(rental.rent_id));
+            t.add(std::to_string(rental.book_id));
+            t.add(std::to_string(rental.user_id));
+            t.add(std::to_string(rental.rent_date));
+            t.add(std::to_string(rental.return_date));
+            t.endOfRow();
+        }
+        std::cout << t << std::endl;
+    }
+   
 }
 
 void Library::sortBooks(int sortBy) {
@@ -258,38 +274,48 @@ void Library::editBook(int book_id, int book_attribute) {
     }
     switch (book_attribute) {
     case 0: {
-        std::string newTitle;
+        std::string new_title;
         std::cout << "Enter new title: ";
-        std::getline(std::cin >> std::ws, newTitle);
-        book->setName(newTitle);
+        std::getline(std::cin >> std::ws, new_title);
+        book->setName(new_title);
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         break;
     }
     case 1: {
-        std::string newAuthor;
+        std::string new_author;
         std::cout << "Enter new author: ";
-        std::getline(std::cin >> std::ws, newAuthor);
-        book->setAuthor(newAuthor);
+        std::getline(std::cin >> std::ws, new_author);
+        book->setAuthor(new_author);
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         break;
     }
     case 2: {
-        int newPages;
+        int new_pages;
         std::cout << "Enter new number of pages: ";
-        std::cin >> newPages;
-        book->setPages(newPages);
+        std::cin >> new_pages;
+        book->setPages(new_pages);
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         break;
     }
     case 3: {
-        int newYear;
+        int new_year;
         std::cout << "Enter new year: ";
-        std::cin >> newYear;
-        book->setYear(newYear);
+        std::cin >> new_year;
+        book->setYear(new_year);
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         break;
     }
     case 4: {
-        std::string newGenre;
+        std::string new_genre;
         std::cout << "Enter new genre: ";
-        std::getline(std::cin >> std::ws, newGenre);
-        book->setGenre(newGenre);
+        std::getline(std::cin >> std::ws, new_genre);
+        book->setGenre(new_genre);
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         break;
     }
     default:

@@ -53,6 +53,7 @@ private:
     void removeBookCopiesInput();
     void addCopiesInput();
     int editBookInput();
+    bool validateGenreString(const std::string book_genre);
 
     void giveAdminRightsInput();
     void removeAdminRightsInput();
