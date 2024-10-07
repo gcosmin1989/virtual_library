@@ -1,6 +1,8 @@
 #pragma once
 
 #include <vector>
+#include <iomanip> 
+#include <sstream>
 #include <iostream>
 #include <ctime>
 #include <algorithm>

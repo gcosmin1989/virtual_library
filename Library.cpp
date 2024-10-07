@@ -156,6 +156,7 @@ std::vector<Rental> Library::getUserRentals(int user_id) const {
 
 
 void Library::print() const {
+    
     TextTable t('-', '|', '+');
 
     t.add("Code");
@@ -164,18 +165,21 @@ void Library::print() const {
     t.add("Pages");
     t.add("Year");
     t.add("Genre");
-    t.add("Rating");
+    t.add("Ratingsss");
     t.add("Copies");
     t.endOfRow();
 
     for (const auto& book : books) {
+
         t.add(std::to_string(book.getUniqueCode()));
         t.add(book.getName());
         t.add(book.getAuthor());
         t.add(std::to_string(book.getPages()));
         t.add(std::to_string(book.getYear()));
         t.add(book.getGenre());
-        t.add(std::to_string(book.getRating()));
+        std::ostringstream stream;
+        stream << std::fixed << std::setprecision(2) << book.getRating();
+        t.add(stream.str());
         t.add(book.getNoPieces() == 0 ? "Not Available" : std::to_string(book.getNoPieces()));
         t.endOfRow();
     }
@@ -259,7 +263,9 @@ void Library::printSortedBooks() const {
         t.add(std::to_string(sorted.getPages()));
         t.add(std::to_string(sorted.getYear()));
         t.add(sorted.getGenre());
-        t.add(std::to_string(sorted.getRating()));
+        std::ostringstream stream;
+        stream << std::fixed << std::setprecision(2) << sorted.getRating();
+        t.add(stream.str());
         t.endOfRow();
     }
 

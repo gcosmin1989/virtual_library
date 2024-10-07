@@ -1,8 +1,32 @@
-﻿  LibraryApp.cpp
+﻿  Book.cpp
+C:\Users\cog\Desktop\CPP_Stuff\Library_Project\Texttable.h(105,52): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'Book.cpp')
+  
+C:\Users\cog\Desktop\CPP_Stuff\Library_Project\Texttable.h(108,34): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'Book.cpp')
+  
+  LIbrary_Project.cpp
+C:\Users\cog\Desktop\CPP_Stuff\Library_Project\Texttable.h(105,52): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'LIbrary_Project.cpp')
+  
+C:\Users\cog\Desktop\CPP_Stuff\Library_Project\Texttable.h(108,34): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'LIbrary_Project.cpp')
+  
+  Library.cpp
+C:\Users\cog\Desktop\CPP_Stuff\Library_Project\Texttable.h(105,52): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'Library.cpp')
+  
+C:\Users\cog\Desktop\CPP_Stuff\Library_Project\Texttable.h(108,34): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'Library.cpp')
+  
+C:\Users\cog\Desktop\CPP_Stuff\Library_Project\Library.cpp(14,22): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\cog\Desktop\CPP_Stuff\Library_Project\Library.cpp(18,28): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  LibraryApp.cpp
 C:\Users\cog\Desktop\CPP_Stuff\Library_Project\Texttable.h(105,52): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
   (compiling source file 'LibraryApp.cpp')
   
 C:\Users\cog\Desktop\CPP_Stuff\Library_Project\Texttable.h(108,34): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
   (compiling source file 'LibraryApp.cpp')
   
+  Generating Code...
   ConsoleApplication3.vcxproj -> C:\Users\cog\Desktop\CPP_Stuff\Library_Project\x64\Debug\Library_Project.exe

@@ -2,6 +2,8 @@
 #include "Texttable.h"
 #include <string>
 #include <vector>
+#include <iomanip> 
+#include <sstream> 
 
 class Book {
 private:

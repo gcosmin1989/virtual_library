@@ -1,6 +1,6 @@
 #include "Book.h"
 #include <iostream>
-#include <stdexcept>
+#include <iomanip>
 
 
 int Book::increment = 100;
@@ -202,7 +202,9 @@ void Book::print() const {
     t.add(std::to_string(getPages()));
     t.add(std::to_string(getYear()));
     t.add(getGenre());
-    t.add(std::to_string(getRating()));
+    std::ostringstream stream;
+    stream << std::fixed << std::setprecision(2) << getRating();
+    t.add(stream.str());
     t.endOfRow();
 
 
