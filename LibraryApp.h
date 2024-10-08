@@ -18,7 +18,7 @@ private:
     Library lib;
     UserManager user_manager;
     User user;
-
+                
     std::string first_panel[2] = { "User", "Admin" };
     std::string user_log_in_panel[4] = { "New User", "Existing User", "Back", "Quit" };
     std::string admin_panel[9] = { "Display Books", "Rented Books", "Add Books","Edit Book", "Delete Book","Add Admin","Remove Admin Rights", "Back", "Quit" };
@@ -32,10 +32,12 @@ private:
 public:
 
     void navigateMenu();
+    void drawMessage(std::string);
 private:
- 
+    
+    void displayUserRentals(const std::vector<Rental>& userRentals);
     void showMenu(std::string panel[], int size, int selection);
-    int selectOption(std::string panel[], int size, std::string message = "");
+    int selectOption(std::string panel[], int size, std::string message = "", bool show_text = true);
     template <size_t N>
     int getSizeOfMenu(std::string(&menu_array)[N]);
 

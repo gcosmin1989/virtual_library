@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\LibraryApp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|solutionrelative:LibraryApp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\Library.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|solutionrelative:Library.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -11,43 +15,20 @@
       "RelativeMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|solutionrelative:Book.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\Book.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|solutionrelative:Book.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\UserManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|solutionrelative:UserManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\Library.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|solutionrelative:Library.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\LibraryApp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|solutionrelative:LibraryApp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\LIbrary_Project.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|solutionrelative:LIbrary_Project.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\User.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|solutionrelative:User.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\UserManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|solutionrelative:UserManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\User.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|solutionrelative:User.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\Rental.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|solutionrelative:Rental.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\UserManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|solutionrelative:UserManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\cstdlib||{3B902123-F8A7-4915-9F01-361F908088D0}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\LibraryApp.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|solutionrelative:LibraryApp.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\Book.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A1F3D5BC-9536-4404-912A-145452340BA3}|ConsoleApplication3.vcxproj|solutionrelative:Book.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -60,52 +41,38 @@
           "SelectedChildIndex": 5,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "User.h",
-              "DocumentMoniker": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\User.h",
-              "RelativeDocumentMoniker": "User.h",
-              "ToolTip": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\User.h",
-              "RelativeToolTip": "User.h",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAWwB0AAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-10-02T12:34:57.819Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Book.h",
-              "DocumentMoniker": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\Book.h",
-              "RelativeDocumentMoniker": "Book.h",
-              "ToolTip": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\Book.h",
-              "RelativeToolTip": "Book.h",
-              "ViewState": "AgIAABsAAAAAAAAAAAAswDAAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-10-02T09:02:24.041Z",
-              "EditorCaption": ""
-            },
-            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "cstdlib",
-              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\cstdlib",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\cstdlib",
-              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\cstdlib",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\cstdlib",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAswFoAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-10-04T11:06:36.486Z",
+              "DocumentIndex": 2,
+              "Title": "Book.h",
+              "DocumentMoniker": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\Book.h",
+              "RelativeDocumentMoniker": "Book.h",
+              "ToolTip": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\Book.h",
+              "RelativeToolTip": "Book.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-10-02T09:02:24.041Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 4,
+              "Title": "UserManager.cpp",
+              "DocumentMoniker": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\UserManager.cpp",
+              "RelativeDocumentMoniker": "UserManager.cpp",
+              "ToolTip": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\UserManager.cpp",
+              "RelativeToolTip": "UserManager.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-08T08:13:03.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "UserManager.h",
               "DocumentMoniker": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\UserManager.h",
               "RelativeDocumentMoniker": "UserManager.h",
@@ -118,59 +85,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Library.cpp",
               "DocumentMoniker": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\Library.cpp",
               "RelativeDocumentMoniker": "Library.cpp",
               "ToolTip": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\Library.cpp",
               "RelativeToolTip": "Library.cpp",
-              "ViewState": "AgIAAPYAAAAAAAAAAAAswAoBAABLAAAAAAAAAA==",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAAAIQAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-02T12:39:16.083Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "LibraryApp.cpp",
               "DocumentMoniker": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\LibraryApp.cpp",
               "RelativeDocumentMoniker": "LibraryApp.cpp",
               "ToolTip": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\LibraryApp.cpp",
               "RelativeToolTip": "LibraryApp.cpp",
-              "ViewState": "AgIAABQCAAAAAAAAAAAWwCcCAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAGQCAAAAAAAAAAAiwHYCAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-04T11:12:20.782Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Library.h",
-              "DocumentMoniker": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\Library.h",
-              "RelativeDocumentMoniker": "Library.h",
-              "ToolTip": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\Library.h",
-              "RelativeToolTip": "Library.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-10-02T12:37:27.794Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Rental.h",
-              "DocumentMoniker": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\Rental.h",
-              "RelativeDocumentMoniker": "Rental.h",
-              "ToolTip": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\Rental.h",
-              "RelativeToolTip": "Rental.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-10-02T12:33:33.024Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
               "Title": "User.cpp",
               "DocumentMoniker": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\User.cpp",
               "RelativeDocumentMoniker": "User.cpp",
@@ -183,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "Book.cpp",
               "DocumentMoniker": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\Book.cpp",
               "RelativeDocumentMoniker": "Book.cpp",
@@ -193,31 +134,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-02T09:02:19.717Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "LIbrary_Project.cpp",
-              "DocumentMoniker": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\LIbrary_Project.cpp",
-              "RelativeDocumentMoniker": "LIbrary_Project.cpp",
-              "ToolTip": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\LIbrary_Project.cpp",
-              "RelativeToolTip": "LIbrary_Project.cpp",
-              "ViewState": "AgIAABMAAAAAAAAAAAAswCwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-26T08:35:53.857Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "LibraryApp.h",
-              "DocumentMoniker": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\LibraryApp.h",
-              "RelativeDocumentMoniker": "LibraryApp.h",
-              "ToolTip": "C:\\Users\\cog\\Desktop\\CPP_Stuff\\Library_Project\\LibraryApp.h",
-              "RelativeToolTip": "LibraryApp.h",
-              "ViewState": "AgIAACMAAAAAAAAAAAAWwDcAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-10-04T07:49:42.144Z"
             }
           ]
         }

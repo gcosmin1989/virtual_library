@@ -1,4 +1,5 @@
 #include "Library.h"
+#include "LibraryApp.h"
 
 
 Library::Library() {
@@ -96,26 +97,21 @@ void Library::getBookCopies(int book_id) {
 void Library::rentBook(int book_id, int user_id, UserManager& userManager) {
     int rent_date = getRentDate();
     int return_date = getReturnDate(15);
-    if (!bookExists(book_id)) {
-        std::cout << "Book ID " << book_id << " does not exist in the library.\n";
-        return;
-    }
 
-    if (!userManager.userExists(user_id)) {
-        std::cout << "User ID " << user_id << " does not exist.\n";
-        return;
-    }
 
     Book* book = getBookById(book_id);
     if (book) {
+        LibraryApp libApp;
         if (book->getNoPieces() > 0) {
             Rental rental(book_id, user_id, rent_date, return_date);
             rentedBooks.push_back(rental);
             book->removeCopy();
-            std::cout << "Book ID " << book_id << " has been rented by User ID " << user_id << ".\n";
+            libApp.drawMessage("Book ID " + std::to_string(book_id) + " has been rented by User ID " + std::to_string(user_id));
+         
         }
         else {
-            std::cout << "No copies available for Book ID " << book_id << ".\n";
+            libApp.drawMessage("No copies available for Book ID: " + std::to_string(book_id));
+            print();
         }
     }
 }
@@ -126,22 +122,15 @@ void Library::returnBook(int book_id, int user_id, int rating) {
             return rental.book_id == book_id && rental.user_id == user_id;
         });
 
-    if (it == rentedBooks.end()) {
-        std::cout << "Rental not found for Book ID " << book_id << " and User ID " << user_id << ".\n";
-    }
-    else {
+   
         rentedBooks.erase(it);
 
         Book* book = getBookById(book_id);
         if (book) {
             book->addCopy();
             book->addRating(rating);
-            std::cout << "Book ID " << book_id << " has been returned by User ID " << user_id << ".\n";
         }
-        else {
-            std::cout << "Book ID " << book_id << " not found during return.\n";
-        }
-    }
+        
 }
 
 std::vector<Rental> Library::getUserRentals(int user_id) const {
@@ -165,7 +154,7 @@ void Library::print() const {
     t.add("Pages");
     t.add("Year");
     t.add("Genre");
-    t.add("Ratingsss");
+    t.add("Rating");
     t.add("Copies");
     t.endOfRow();
 
