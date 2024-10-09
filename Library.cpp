@@ -1,4 +1,4 @@
-#include "Library.h"
+﻿#include "Library.h"
 #include "LibraryApp.h"
 
 
@@ -26,6 +26,7 @@ void Library::addBook(const Book& book) {
             return;
         }
     }
+    
     books.push_back(book);
 }
 
@@ -51,11 +52,9 @@ void Library::removeBook(int book_id) {
     for (auto it = books.begin(); it != books.end(); ++it) {
         if (it->getUniqueCode() == book_id) {
             books.erase(it);
-            std::cout << "Book with ID " << book_id << " was removed." << std::endl;
             return;
         }
     }
-    std::cout << "Book with ID " << book_id << " not found." << std::endl;
 }
 
 bool Library::bookExists(int book_id) const {
@@ -192,11 +191,7 @@ void Library::printBook(int book_id) {
 }
 
 void Library::printRentedBooks() const {
-    
-    if (rentedBooks.empty()) {
-        std::cout << "There are no rented books!" << std::endl;
-    }
-    else {
+
         TextTable t('-', '|', '+');
 
         t.add("Rent ID");
@@ -205,7 +200,7 @@ void Library::printRentedBooks() const {
         t.add("Rent Date");
         t.add("Return Date");
         t.endOfRow();
-        std::cout << "Rented Books:\n";
+
         for (const auto& rental : rentedBooks) {
             t.add(std::to_string(rental.rent_id));
             t.add(std::to_string(rental.book_id));
@@ -217,7 +212,6 @@ void Library::printRentedBooks() const {
         std::cout << t << std::endl;
     }
    
-}
 
 void Library::sortBooks(int sortBy) {
     sortedBooks = books;
@@ -263,18 +257,14 @@ void Library::printSortedBooks() const {
 
 void Library::editBook(int book_id, int book_attribute) {
     Book* book = getBookById(book_id);
-    if (book == nullptr) {
-        std::cout << "Book not found." << std::endl;
-        return;
-    }
+
     switch (book_attribute) {
     case 0: {
         std::string new_title;
         std::cout << "Enter new title: ";
         std::getline(std::cin >> std::ws, new_title);
         book->setName(new_title);
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
         break;
     }
     case 1: {
@@ -282,8 +272,6 @@ void Library::editBook(int book_id, int book_attribute) {
         std::cout << "Enter new author: ";
         std::getline(std::cin >> std::ws, new_author);
         book->setAuthor(new_author);
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         break;
     }
     case 2: {
@@ -309,16 +297,14 @@ void Library::editBook(int book_id, int book_attribute) {
         std::cout << "Enter new genre: ";
         std::getline(std::cin >> std::ws, new_genre);
         book->setGenre(new_genre);
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
         break;
     }
     default:
         std::cout << "Invalid option." << std::endl;
         break;
     }
-
-    std::cout << "Book updated successfully!" << std::endl;
+  
 }
 
 int Library::formatDate(time_t timeValue) {

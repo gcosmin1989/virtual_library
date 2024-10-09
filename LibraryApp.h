@@ -26,7 +26,7 @@ private:
     std::string user_panel[4] = { "Rent a Book", "Return a Book", "Back", "Quit" };
     std::string sort_panel[7] = { "Rent" ,"Sort by Name", "Sort by Author", "Sort by Pages", "Sort by Rating", "Back", "Quit" };
     std::string book_add_panel[4] = { "New Book", "Add copies of an existing Book", "Back", "Quit" };
-    std::string book_remove_panel[2] = { "Delete Book", "Remove copies of a book" };
+    std::string book_remove_panel[4] = { "Delete Book", "Remove copies of a book", "Back", "Quit"};
     std::string edit_book_panel[5] = { "Edit Title", "Edit Author", "Edit Pages", "Edit Year", "Edit Genre" };
 
 public:
@@ -37,7 +37,7 @@ private:
     
     void displayUserRentals(const std::vector<Rental>& userRentals);
     void showMenu(std::string panel[], int size, int selection);
-    int selectOption(std::string panel[], int size, std::string message = "", bool show_text = true);
+    int selectOption(std::string panel[], int size, std::string message = "");
     template <size_t N>
     int getSizeOfMenu(std::string(&menu_array)[N]);
 
@@ -55,7 +55,7 @@ private:
     void removeBookCopiesInput();
     void addCopiesInput();
     int editBookInput();
-    bool validateGenreString(const std::string book_genre);
+    bool validateGenreAndAuthorString(const std::string book_genre);
 
     void giveAdminRightsInput();
     void removeAdminRightsInput();

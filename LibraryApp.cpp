@@ -55,7 +55,7 @@ void LibraryApp::showMenu(std::string panel[], int size, int selection) {
     }
 }
 
-int LibraryApp::selectOption(std::string panel[], int size, std::string message, bool is_visible) {
+int LibraryApp::selectOption(std::string panel[], int size, std::string message) {
     int selection = 0;
     bool is_running = true;
 
@@ -105,11 +105,26 @@ int LibraryApp::getSizeOfMenu(std::string(&menu_array)[N]) {
 }
 
 void LibraryApp::inputStringValidation(std::string& input, const std::string& input_name) {
-    while (input.length() < MIN_LEN || input.length() > MAX_LEN) {
-        if (input_name == "genre" && !validateGenreString(input)) {
-            std::cout << "The " << input_name << " can not contain numbers"<<std::endl ;
+    while (true) {
+        bool isValid = true;
+        if (input.length() < MIN_LEN || input.length() > MAX_LEN) {
+            system("cls");
+             drawMessage("!!! Invalid input lenght !!!");
+            std::cout << "Enter a valid " << input_name << " between "<< MIN_LEN << " and " << MAX_LEN << " characters: ";
+            isValid = false;
         }
-        std::cout << "Enter a valid " << input_name << " between "<<MIN_LEN<<" and "<<MAX_LEN<<" char: " ;
+
+        if ((input_name == "genre" || input_name =="author") && !validateGenreAndAuthorString(input)) {
+            system("cls");
+            drawMessage("!!! Invalid Input !!!");
+            std::cout << "Enter a valid " << input_name << ", only characters: ";
+            isValid = false;
+        }
+        
+        if (isValid) {
+            system("cls");
+            break;
+        }
         std::getline(std::cin, input);
     }
 }
@@ -122,11 +137,15 @@ void LibraryApp::inputYearValidation(int& input) {
                 break;
             }
             else {
-                std::cout << "Year must be between 1500 and 2024: " << std::endl;;
+                system("cls");
+                drawMessage("!!! Invalid Input !!!");
+                std::cout << "Year must be between 1500 and 2024: ";
             }
         }
         else {
-            std::cout << "Invalid input. Please enter a numeric value: " << std::endl;
+            system("cls");
+            drawMessage("!!! Invalid Input !!!");
+            std::cout << "Please enter a numeric value: ";
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
@@ -139,15 +158,20 @@ void LibraryApp::inputPagesValidation(int& input) {
     while (true) {
         if (std::cin >> input) {
             if (input > 5) {
+                system("cls");
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
                 break; 
             }
             else {
-                std::cout << "The number of pages must be greater than 5: " << std::endl;
+                system("cls");
+                drawMessage("!!! Invalid Input !!!");
+                std::cout << "The number of pages must be greater than 5: ";
             }
         }
         else {
-            std::cout << "Invalid input. Please enter a numeric value: " << std::endl;
+            system("cls");
+            drawMessage("!!! Invalid Input !!!");
+            std::cout << "Please enter a numeric value: ";
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
@@ -253,9 +277,9 @@ User* LibraryApp::checkAdminRightsInput() {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
-bool LibraryApp::validateGenreString(const std::string book_genre)
+bool LibraryApp::validateGenreAndAuthorString(const std::string text)
 {
-    for (const char c : book_genre) {
+    for (const char c : text) {
         if (!isalpha(c) && !isspace(c))
             return false;
     }
@@ -272,29 +296,32 @@ void LibraryApp::addBookInput() {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    std::cout << "Enter the Book Title:" << std::endl;
+    std::cout << "Enter the Book Title: ";
     std::getline(std::cin, book_title);
-    inputStringValidation(book_title, "book name");
+    inputStringValidation(book_title, "book title");
 
-    std::cout << "Enter the Book Author:" << std::endl;
+    drawMessage("Add New Book");
+    std::cout << "Enter the Book Author: ";
     std::getline(std::cin, book_author);
-    inputStringValidation(book_author, "book author");
+    inputStringValidation(book_author, "author");
 
-    std::cout << "Enter the Book Genre:" << std::endl;
+    drawMessage("Add New Book");
+    std::cout << "Enter the Book Genre: ";
     std::getline(std::cin, book_genre);
     inputStringValidation(book_genre, "genre");
    
-
-    std::cout << "Enter the Book Pages:" << std::endl;
+    drawMessage("Add New Book");
+    std::cout << "Enter the Book Pages: ";
     inputPagesValidation(book_pages);
 
-    std::cout << "Enter the Book Year:" << std::endl;
+    drawMessage("Add New Book");
+    std::cout << "Enter the Book Year: ";
     inputYearValidation(book_year);
 
     Book book(book_title, book_author, book_pages, book_year, book_genre);
     lib.addBook(book);
     system("cls");
-    std::cout << "Book added successfully!" << std::endl;
+    drawMessage("Book added successfully!");
     book.print();
 }
 
@@ -310,11 +337,29 @@ void LibraryApp::checkBookExistsInput(int& book_id) {
 void LibraryApp::removeBookInput() {
     int book_id;
     lib.print();
-    std::cout << "Enter the book ID to delete:" << std::endl;
-    std::cin >> book_id;
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    while (true) {
+        std::cout << "Enter the Book ID to delete: ";
+        if (std::cin >> book_id) {
+            if (lib.bookExists(book_id)) {
 
-    checkBookExistsInput(book_id);
+                system("cls");
+                drawMessage("Delete Book");
+                break;
+            }
+            else {
+                system("cls");
+                drawMessage("!!! Book does not exist !!!");
+                lib.print();
+            }
+        }
+        else {
+            system("cls");
+            drawMessage("!!! Invalid input !!!");
+            lib.print();
+            std::cin.clear();
+        }
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
     lib.removeBook(book_id);
 }
 
@@ -323,39 +368,57 @@ void LibraryApp::removeBookCopiesInput() {
     int book_copies;
 
     lib.print();
-    std::cout << "Enter the book ID to remove copies: " << std::endl;
 
-    while (!(std::cin >> book_id)) {
-        std::cout << "Invalid input. Please enter a numeric Book ID: ";
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+    while (true) {
+        std::cout << "Enter the Book ID to remove copies: ";
+        if (std::cin >> book_id) {
+            if (lib.bookExists(book_id)) {
+                system("cls");
+                drawMessage("Remove book copies");
+                break;
+            }
+            else {
+                system("cls");
+                drawMessage("!!! Book does not exist !!!");
+                lib.print();
+            }
+        }
+        else {
+            system("cls");
+            drawMessage("!!! Invalid input !!!");
+            lib.print();
+            std::cin.clear();
+        }
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    checkBookExistsInput(book_id);
-    Book* book = lib.getBookById(book_id);
 
+
+    Book* book = lib.getBookById(book_id);
     if (book) {
         int current_copies = book->getNoPieces();
-        while (true) {
-            std::cout << "Enter the number of copies to remove (1-" << current_copies << "): " << std::endl;
 
+        while (true) {
+            std::cout << "Enter the number of copies to remove (1-" << current_copies << "): ";
             if (std::cin >> book_copies) {
                 if (book_copies >= 1 && book_copies <= current_copies) {
-                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
-                    break; 
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    break;
                 }
                 else {
-                    std::cout << "The number of copies must be between 1 and " << current_copies << "." << std::endl;
+                    system("cls");
+                    drawMessage("!!! Invalid number of copies !!!");
                 }
             }
             else {
-                std::cout << "Invalid input. Please enter a numeric value." << std::endl;
+                system("cls");
+                drawMessage("!!! Invalid input !!!");
                 std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             }
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
         book->removeCopy(book_copies);
-        std::cout << "Copies removed successfully!" << std::endl;
+        system("cls");
+        drawMessage("Copies removed successfully!");
     }
     else {
         std::cout << "Book not found." << std::endl;
@@ -366,23 +429,58 @@ void LibraryApp::addCopiesInput() {
     int book_id;
     int book_copies;
     lib.print();
-    std::cout << "Enter the book ID:" << std::endl;
-    while (!(std::cin >> book_id)) {
-        std::cout << "Invalid input. Please enter a numeric Book ID: ";
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+    while (true) {
+        std::cout << "Enter the Book ID: ";
+        if (std::cin >> book_id) {
+            if (lib.bookExists(book_id)) {
+                
+                system("cls");
+                drawMessage("Add book copies");
+                break;
+            }
+            else {
+                system("cls");
+                drawMessage("!!! Book does not exist !!!");
+                lib.print();
+            }
+        }
+        else {
+            system("cls");
+            drawMessage("!!! Invalid input !!!");
+            lib.print();
+            std::cin.clear();
+        }
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
+  
+    while (true) {
+        
+        lib.print();
+        std::cout << "Enter the number of copies to add: ";
+        if (std::cin >> book_copies) {
+            if (book_copies > 0) {
+                break;
+            }
+            else {
+                system("cls");
+                drawMessage("!!! Invalid number of copies !!!");
+            }
+        }
+        else {
+            system("cls");
+            drawMessage("!!! Invalid input !!!");
+            std::cin.clear();
+        }
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    std::cout << "Enter the numbers of copies: " << std::endl;
-    checkBookExistsInput(book_id);
+
     Book* book = lib.getBookById(book_id);
     if (book) {
-        inputPagesValidation(book_copies);
         book->addCopy(book_copies);
-        std::cout << "Copies added successfully!" << std::endl;
-    }
-    else {
-        std::cout << "Book not found." << std::endl;
+        system("cls");
+        drawMessage("Copies added successfully!");  
     }
 }
 
@@ -391,19 +489,25 @@ int LibraryApp::editBookInput() {
     int book_id;
 
     while (true) {
+        
+        lib.print();
         std::cout << "Enter the book ID you want to edit: ";
         if (std::cin >> book_id) {
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             Book* book = lib.getBookById(book_id);
             if (book) {
+                system("cls");
+                drawMessage("Edit Book");
                 return book_id;
             }
             else {
-                std::cout << "Book with ID " << book_id << " does not exist. " << std::endl;
+                system("cls");
+                drawMessage("!!! Book does not exist !!!");
             }
         }
         else {
-            std::cout << "Invalid input. Please enter a numeric Book ID." << std::endl;
+            system("cls");
+            drawMessage("!!! Invalid Input !!!");
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
@@ -417,7 +521,7 @@ void LibraryApp::giveAdminRightsInput() {
     User* user = nullptr;
 
     while (true) {
-        std::cout << "Enter the user ID you want to give Admin Rights:" << std::endl;
+        std::cout << "Enter the user ID you want to give Admin Rights: ";
         if (std::cin >> user_id) {
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             user = user_manager.getUserById(user_id);
@@ -425,20 +529,25 @@ void LibraryApp::giveAdminRightsInput() {
                 break;
             }
             else {
-                std::cout << "The ID you have entered does not exist. Please try again." << std::endl;
+                system("cls");
+                drawMessage("!!! The id does not exist !!!");
             }
+
         }
         else {
-            std::cout << "Invalid input. Please enter a numeric User ID." << std::endl;
+            system("cls");
+            drawMessage("!!! Invalid input !!!");
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
     }
     if (user->getAdminRights()) {
-        std::cout << "The user already has Admin Rights!" << std::endl;
+        system("cls");
+        drawMessage("!!! Already has Admin Rights !!!");
     }else{
          user->setAdminRights();
-         std::cout << "Admin rights granted successfully!" << std::endl;
+         system("cls");
+         drawMessage("Admin rights granted successfully!");
     }
 }
 
@@ -447,8 +556,7 @@ void LibraryApp::removeAdminRightsInput() {
     User* user = nullptr;
 
     while (true) {
-        std::cout << "Enter the user ID you want to remove Admin Rights:" << std::endl;
-
+        std::cout << "Enter the user ID you want to remove Admin Rights: ";
         if (std::cin >> user_id) {
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             user = user_manager.getUserById(user_id);
@@ -456,21 +564,26 @@ void LibraryApp::removeAdminRightsInput() {
                 break;
             }
             else {
-                std::cout << "The ID you have entered does not exist. Please try again." << std::endl;
+                system("cls");
+                drawMessage("!!! The ID does not exist !!!");
             }
         }
         else {
-            std::cout << "Invalid input. Please enter a numeric User ID." << std::endl;
+            system("cls");
+            drawMessage("!!! Invalid input !!!");
             std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
     }
+
     if (user->getAdminRights()) {
         user->setAdminRights(false);
-        std::cout << "Admin rights removed successfully!" << std::endl;
+        system("cls");
+        drawMessage("Admin rights removed successfully!");
     }
     else {
-        std::cout << "The user does not have Admin Rights." << std::endl;
+        system("cls");
+        drawMessage("!!! The user does not have Admin Rights !!!");
     }
 }
 void LibraryApp::displayUserRentals(const std::vector<Rental>& userRentals) {
@@ -624,7 +737,7 @@ void LibraryApp::navigateMenu() {
                         bool in_user_panel = true;
                         while (in_user_panel) {
 
-                            int user_selection = selectOption(user_panel, getSizeOfMenu(user_panel), "Logged in with id: "+std::to_string(loggedInUser->getUserId()), is_visible= false);
+                            int user_selection = selectOption(user_panel, getSizeOfMenu(user_panel), "Logged in with id: "+std::to_string(loggedInUser->getUserId()));
                             if (user_selection == 0) { // Rent a Book
                                 bool in_display_panel = true;
                                 bool show = true;
@@ -635,7 +748,7 @@ void LibraryApp::navigateMenu() {
                                 show = false;
                                 while (in_display_panel) {
 
-                                    int display_selection = selectOption(sort_panel, getSizeOfMenu(sort_panel), "Rent & Sort", is_visible=false);
+                                    int display_selection = selectOption(sort_panel, getSizeOfMenu(sort_panel), "Rent & Sort");
                                    
                                     if (display_selection == 0) { // Rent
                                         
@@ -648,7 +761,7 @@ void LibraryApp::navigateMenu() {
                                         lib.printSortedBooks();
                                         is_visible = true;
                                     }
-                                    else if (display_selection == 5) { // Back
+                                    else if (display_selection == 5) {// Back
                                         in_display_panel = false;
                                         drawMessage("Loged in with id : "+std::to_string(loggedInUser->getUserId()));
                                     }
@@ -656,14 +769,13 @@ void LibraryApp::navigateMenu() {
                                         exit(0);
                                     }
                                 }
-                                
                             }
-
                             else if (user_selection == 1) { // Return Book
                                 drawMessage("Return Book");
                                 returnBookInput(loggedInUser);
                             }
                             else if (user_selection == 2) { // Back to User Login Menu
+                                drawMessage("User Menu");
                                 in_user_panel = false;
                                 loggedInUser->setLogInStatus(false);
                             }
@@ -680,7 +792,7 @@ void LibraryApp::navigateMenu() {
                     if (loggedInUser != nullptr) {
                         bool in_user_panel = true;
                         while (in_user_panel) {
-                            int user_selection = selectOption(user_panel, getSizeOfMenu(user_panel), "Logged in with id: " + std::to_string(loggedInUser->getUserId()), is_visible = false);
+                            int user_selection = selectOption(user_panel, getSizeOfMenu(user_panel), "Logged in with id: " + std::to_string(loggedInUser->getUserId()));
 
                             if (user_selection == 0) { // Rent a Book
                                 bool in_display_panel = true;
@@ -691,7 +803,7 @@ void LibraryApp::navigateMenu() {
                                 }
                                 show = false;
                                 while (in_display_panel) {
-                                    int display_selection = selectOption(sort_panel, getSizeOfMenu(sort_panel), "Rent & Sort", is_visible = false);
+                                    int display_selection = selectOption(sort_panel, getSizeOfMenu(sort_panel), "Rent & Sort");
 
                                     if (display_selection == 0) { // Rent
                                         
@@ -718,6 +830,7 @@ void LibraryApp::navigateMenu() {
                                 //drawMessage("Return Book");
                             }
                             else if (user_selection == 2) { // Back
+                                drawMessage("User Menu");
                                 in_user_panel = false;
                                 loggedInUser->setLogInStatus(false);
                             }
@@ -737,9 +850,9 @@ void LibraryApp::navigateMenu() {
         }
         else if (menu_selection == 1) { // Admin Menu
             bool in_admin_menu = true;
-            bool show=true;
+            
             while (in_admin_menu) {
-                
+                bool show = true;
                 if (show) {
                     drawMessage("Admin Menu");
                 }
@@ -751,25 +864,43 @@ void LibraryApp::navigateMenu() {
                     User* adminUser = checkAdminRightsInput();
                     if (adminUser != nullptr) {
                         bool in_admin_panel = true;
+                      
                         while (in_admin_panel) {
                             int selection_admin_panel = selectOption(admin_panel, getSizeOfMenu(admin_panel), "Admin Panel");
-
+                          
                             if (selection_admin_panel == 0) { // Display Books
+                                drawMessage("Library Books");
                                 lib.print();
                             }
                             else if (selection_admin_panel == 1) { // Rented Books
-                                lib.printRentedBooks();
+                                drawMessage("Library Rented Books");
+                                if (lib.getRentedSize() < 1) {
+                                    system("cls");
+                                    drawMessage("There are no rented books");
+                                }
+                                else {
+                                    lib.printRentedBooks();
+                                }
+                                
                             }
                             else if (selection_admin_panel == 2) { // Add Books
+                                show = true;
+                                if (show) {
+                                    drawMessage("Add Books");
+                                }
+                                show = false;
                                 int selection_book = selectOption(book_add_panel, getSizeOfMenu(book_add_panel), "Add Books");
 
                                 if (selection_book == 0) { // New Book
+                                    drawMessage("Add New Book");
                                     addBookInput();
                                 }
                                 else if (selection_book == 1) { // Add copies of an existing Book
+                                    drawMessage("Add Copies of Book");
                                     addCopiesInput();
                                 }
                                 else if (selection_book == 2) { // Back
+                                    drawMessage("Admin Panel");
                                     in_admin_menu = false;
                                 }
                                 else if (selection_book == 3) { // Quit
@@ -779,34 +910,57 @@ void LibraryApp::navigateMenu() {
                             else if (selection_admin_panel == 3) { // Edit Book
                                 bool in_edit_menu = true;
                                 while (in_edit_menu) {
-                                    lib.print();
+                                    drawMessage("Edit Book");
                                     int book_id = editBookInput();
                                     int selection_book_edit = selectOption(edit_book_panel, getSizeOfMenu(edit_book_panel), "Edit Book");
 
                                     if (selection_book_edit >= 0 && selection_book_edit < 5) {
+                                        system("cls");
+                                        drawMessage(edit_book_panel[selection_book_edit]);
                                         lib.editBook(book_id, selection_book_edit);
+                                        system("cls");
+                                        drawMessage("Book updated successfully!");
                                         lib.printBook(book_id);
                                         in_edit_menu = false;
-                                    }
-                                    else {
-                                        std::cout << "Invalid selection. Try again." << std::endl;
                                     }
                                 }
                             }
                             else if (selection_admin_panel == 4) { // Delete Book
+                                show = true;
+                                if (show) {
+                                    drawMessage("Delete Books");
+                                }
+                                show = false;
                                 int selection_book = selectOption(book_remove_panel, getSizeOfMenu(book_remove_panel), "Delete Book");
-
+                               
                                 if (selection_book == 0) { // Delete Book
+                                    
+                                    drawMessage(book_remove_panel[0]);
                                     removeBookInput();
+                                    system("cls");
+                                    drawMessage("Book deleted successfully!");
                                 }
                                 else if (selection_book == 1) { // Remove copies of a book
+                                    drawMessage(book_remove_panel[1]);
                                     removeBookCopiesInput();
+                                    system("cls");
+                                    drawMessage("Copies removed successfully!");
+                                }
+                                else if (selection_book == 2) { // Back
+                                    drawMessage("Admin Panel");
+                                    in_admin_menu = false;
+                                    
+                                }
+                                else if (selection_book == 3) { // Quit
+                                    exit(0);
                                 }
                             }
                             else if (selection_admin_panel == 5) { // Add Admin
+                                drawMessage("Add Admin");
                                 giveAdminRightsInput();
                             }
                             else if (selection_admin_panel == 6) { // Remove Admin Rights
+                                drawMessage("Remove Admin");
                                 removeAdminRightsInput();
                             }
                             else if (selection_admin_panel == 7) { // Back to Admin Login Menu
