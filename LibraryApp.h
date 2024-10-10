@@ -24,7 +24,7 @@ private:
     std::string user_log_in_panel[4] = { "New User", "Existing User", "Back", "Quit" };
     std::string admin_panel[9] = { "Display Books", "Rented Books", "Add Books","Edit Book", "Delete Book","Add Admin","Remove Admin Rights", "Back", "Quit" };
     std::string admin_log_in_panel[3] = { "Log in Admin", "Back", "Quit" };
-    std::string user_panel[4] = { "Rent a Book", "Return a Book", "Back", "Quit" };
+    std::string user_panel[4] = { "Display Books", "Return a Book", "Back", "Quit" };
     std::string sort_panel[7] = { "Rent" ,"Sort by Name", "Sort by Author", "Sort by Pages", "Sort by Rating", "Back", "Quit" };
     std::string book_add_panel[4] = { "New Book", "Add copies of an existing Book", "Back", "Quit" };
     std::string book_remove_panel[4] = { "Delete Book", "Remove copies of a book", "Back", "Quit"};
