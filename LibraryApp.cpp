@@ -108,13 +108,13 @@ int LibraryApp::getSizeOfMenu(std::string(&menu_array)[N]) {
 void LibraryApp::inputStringValidation(std::string& input, const std::string& input_name) {
     while (true) {
         bool isValid = true;
-        if (input.length() < MIN_LEN || input.length() > MAX_LEN) {//system("cls");
+        if (input.length() < MIN_LEN || input.length() > MAX_LEN) {
              drawMessage(invalid_input);
             std::cout << "Enter a valid " << input_name << " between "<< MIN_LEN << " and " << MAX_LEN << " characters: ";
             isValid = false;
         }
 
-        if ((input_name == "genre" || input_name =="author") && !validateGenreAndAuthorString(input)) { //system("cls");
+        if ((input_name == "genre" || input_name =="author") && !validateGenreAndAuthorString(input)) { 
             drawMessage(invalid_input);
             std::cout << "Enter a valid " << input_name << ", only characters: ";
             isValid = false;
@@ -136,13 +136,11 @@ void LibraryApp::inputYearValidation(int& input) {
                 break;
             }
             else {
-                //system("cls");
                 drawMessage(invalid_input);
                 std::cout << "Year must be between 1500 and 2024: ";
             }
         }
         else {
-            //system("cls");
             drawMessage(invalid_input);
             std::cout << "Please enter a numeric value: ";
             std::cin.clear();
@@ -166,7 +164,6 @@ void LibraryApp::inputPagesValidation(int& input) {
             }
         }
         else {
-            //system("cls");
             drawMessage(invalid_input);
             std::cout << "Please enter a numeric value: ";
             std::cin.clear();

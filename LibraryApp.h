@@ -15,6 +15,7 @@
 
 class LibraryApp {
 private:
+
     Library lib;
     UserManager user_manager;
     User user;
