@@ -33,6 +33,7 @@ public:
 
     void navigateMenu();
     void drawMessage(std::string);
+    std::string invalid_input = "!!! Invalid Input !!!";
 private:
     
     void displayUserRentals(const std::vector<Rental>& userRentals);
