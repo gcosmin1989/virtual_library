@@ -494,25 +494,21 @@ void LibraryApp::giveAdminRightsInput() {
                 break;
             }
             else {
-                system("cls");
                 drawMessage("!!! The id does not exist !!!");
             }
-
         }
         else {
-            system("cls");
-            //drawMessage("!!! Invalid input !!!");
+            drawMessage(invalid_input);
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
     }
+
     if (user->getAdminRights()) {
-        system("cls");
-        //drawMessage("!!! Already has Admin Rights !!!");
+      drawMessage("!!! Already has Admin Rights !!!");
     }else{
          user->setAdminRights();
-         system("cls");
-         //drawMessage("Admin rights granted successfully!");
+        drawMessage("Admin rights granted successfully!");
     }
 }
 
@@ -674,7 +670,6 @@ void LibraryApp::rentBookInput(User* user) {
 
 void LibraryApp::navigateMenu() {
     bool is_running = true;
-    LibraryApp libapp;
     while (is_running) {
         drawMessage("Main Menu");
         int menu_selection = selectOption(first_panel, getSizeOfMenu(first_panel), "Main Menu");
@@ -780,7 +775,6 @@ void LibraryApp::navigateMenu() {
                             }
                             else if (user_selection == 1) { // Return Book
                                 returnBookInput(loggedInUser);
-                                //drawMessage("Return Book");
                             }
                             else if (user_selection == 2) { // Back
                                 drawMessage("User Menu");

@@ -17,6 +17,7 @@ Book::Book(std::string title, std::string author, int pages, int year, std::stri
     unique_code = increment;
     no_pieces = 1;
     ratings.assign(5, 0);
+    std::cout << "BOOK " << getUniqueCode() << std::endl;
 }
 
 // Copy constructor
