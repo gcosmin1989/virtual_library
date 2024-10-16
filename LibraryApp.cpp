@@ -649,9 +649,18 @@ void LibraryApp::rentBookInput(User* user) {
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             system("cls");
             if (lib.bookExists(book_id)) {
-                lib.rentBook(book_id, user->getUserId(), user_manager);
-                show = false;
-                break;
+                if(lib.getNumberOfCopies(book_id)>0) {
+                    lib.rentBook(book_id, user->getUserId(), user_manager);
+                    show = false;
+                    drawMessage("Book succsefuly rented");
+                    break;
+                }
+                else {
+                    show = false;
+                    drawMessage("No Copies available for Book id: "+std::to_string(book_id));
+                    break;
+                }
+                
             }
             else {
                 drawMessage("!!! The Book ID was not found !!!");
@@ -696,6 +705,7 @@ void LibraryApp::navigateMenu() {
                                     drawMessage("Rent & Sort");
                                 }
                                 show = false;
+                                
                                 while (in_display_panel) {
 
                                     int display_selection = selectOption(sort_panel, getSizeOfMenu(sort_panel), "Rent & Sort");

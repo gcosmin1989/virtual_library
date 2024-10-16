@@ -25,7 +25,7 @@ private:
 
 public:
 
-    Library();
+    Library()=default;
 
 
     int getSize() const;

@@ -16,7 +16,7 @@
 class LibraryApp {
 private:
 
-    Library lib;
+    Library& lib;
     UserManager user_manager;
     User user;
                 
@@ -35,6 +35,7 @@ public:
     void navigateMenu();
     void drawMessage(std::string);
     std::string invalid_input = "!!! Invalid Input !!!";
+    LibraryApp(Library& library) : lib(library) {}
 private:
     
     void displayUserRentals(const std::vector<Rental>& userRentals);

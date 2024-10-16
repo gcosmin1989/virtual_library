@@ -2,14 +2,6 @@
 #include "LibraryApp.h"
 
 
-Library::Library() {
-    books = {
-    {"Barte1", "Autor1", 200, 1989, "Romance"},
-    {"Darte2", "Autor2", 100, 2019, "Drama"},
-    {"Aarte3", "Autor3", 300, 2020, "Thriller"}
-    };
-}
-
 
 int Library::getSize() const {
     return books.size();
@@ -99,18 +91,13 @@ void Library::rentBook(int book_id, int user_id, UserManager& userManager) {
 
 
     Book* book = getBookById(book_id);
+
+
     if (book) {
-        LibraryApp libApp;
         if (book->getNoPieces() > 0) {
             Rental rental(book_id, user_id, rent_date, return_date);
             rentedBooks.push_back(rental);
-            book->removeCopy();
-            libApp.drawMessage("Book ID " + std::to_string(book_id) + " has been rented by User ID " + std::to_string(user_id));
-         
-        }
-        else {
-            libApp.drawMessage("No copies available for Book ID: " + std::to_string(book_id));
-            print();
+            book->removeCopy();         
         }
     }
 }
